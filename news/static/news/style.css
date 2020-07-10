@@ -19,7 +19,7 @@ a.nav-link.active{
 }
 
 #homepage{
-    height: 100%;
+    height: calc(100% - 72px);
     
 }
 
