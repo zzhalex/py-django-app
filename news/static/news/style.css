@@ -22,3 +22,18 @@ a.nav-link.active{
     height: 100%;
     
 }
+
+.sideBar{
+    width: 240px;
+    height: 100%;
+    float: left;
+    color:#000;
+    border-right: 2px solid rgb(201, 201, 201);
+}
+
+.sideBarItem{
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    
+}

@@ -1,7 +1,14 @@
 {% extends "index.html" %}
 {% block title %}Homepage{% endblock %}
 {% block content %}
-    <div id='homepage'>
-        The news home page
+<div id='homepage'>
+    The news home page
+    <div class='sideBar'>
+        {% for categroy in categorylist %}
+            <div class='sideBarItem {{ categroy.category_name }}'>
+                {{ categroy.category_name }}
+            </div>
+        {% endfor %}
     </div>
+</div>
 {%endblock%}
