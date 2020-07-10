@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+<<<<<<< HEAD
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
     
@@ -12,3 +13,5 @@ class Post(models.Model):
     post_contact = models.CharField(max_length=100,default='')
     post_owner = models.CharField(max_length=100,default='')
     pub_date = models.DateTimeField('date published')
+=======
+>>>>>>> c83d230948e5225f752cf55d34ff15e2b2765ece
