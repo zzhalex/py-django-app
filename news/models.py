@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 # Create your models here.
 class Category(models.Model):
@@ -11,4 +12,4 @@ class Post(models.Model):
     post_price = models.IntegerField()
     post_contact = models.CharField(max_length=100,default='')
     post_owner = models.CharField(max_length=100,default='')
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField(default=now, blank=True)

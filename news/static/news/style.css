@@ -18,13 +18,13 @@ a.nav-link.active{
     border-bottom: 2px solid #1DB954;
 }
 
-#homepage{
+.homepage{
     height: calc(100% - 72px);
-    
+    width: 100%;
 }
 
 .sideBar{
-    width: 240px;
+    width: 360px;
     height: 100%;
     float: left;
     color:#000;
@@ -36,4 +36,88 @@ a.nav-link.active{
     padding: 12px;
     cursor: pointer;
     
+}
+
+.postFormContainer{
+    width: 600px;
+    margin:auto;
+    padding: 10px;
+}
+
+.postFormContainer .form-row{
+    margin-top: 14px;
+}
+
+.form-row label{
+    width: 200px;
+    height: 42px;
+    padding: 10px;
+}
+
+.form-row input,
+.form-row select{
+    width: 326px;
+    height: 42px;
+    padding: 10px;
+}
+
+.form-row textarea{
+    width: 326px;
+    padding: 10px;
+}
+.submitpost{
+    width: 286px;
+    margin-top: 24px;
+    margin-left: calc( (100% - 286px)/2 );
+}
+
+.mainBody,.detailBody{
+    padding: 18px;
+    width: calc(100% - 360px);
+    float: left;
+    height: 100%;
+}
+
+.mainBody .card{
+    width: 240px;
+    margin: 10px;
+    float: left;
+}
+
+.detailClick{
+    float: right;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 16px;
+}
+
+.detailClick:hover{
+    background-color: rgb(207, 207, 207);
+    color: #fff;
+}
+
+.detailBody{
+    display: none;
+}
+
+.backToMain{
+    cursor: pointer;
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 24px;
+    background-color: rgb(207, 207, 207);
+    color:#fff;
+}
+
+.detailMainDiv{
+    width: 650px;
+    margin: auto;
+    padding: 12px;
+}
+
+.detailInfo.Title{
+    font-size: 24px;
+    font-weight: 700;
 }
