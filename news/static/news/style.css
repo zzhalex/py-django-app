@@ -1,41 +1,67 @@
 html,body{
     height: 100%;
     width: 100%;
-    
+    background-color: #18191a;
 }
 
 #NavContainer{
     height: 72px;
     padding: 16px;
     background-color: #000;
+    border-bottom: 1px solid #3e4042;
 }
 
 a.nav-link{
     color: #fff;
 }
 
-a.nav-link.active{
-    border-bottom: 2px solid #1DB954;
+a.nav-link span{
+    width: 38px;
+    height: 38px;
+    padding: 7px;
+    border-radius: 20px;
+    background-color: #414243;
+}
+
+.nav-link{
+    padding:4px;
+}
+
+a.nav-link.active span{
+    background-color: rgb(207, 207, 207);
+    
 }
 
 .homepage{
     height: calc(100% - 72px);
     width: 100%;
+    background-color: #18191a;
+    color:#fff;
 }
 
 .sideBar{
     width: 360px;
     height: 100%;
     float: left;
-    color:#000;
-    border-right: 2px solid rgb(201, 201, 201);
+    color:#fff;
+    border-right: 1px solid #3e4042;
 }
 
 .sideBarItem{
     text-align: center;
     padding: 12px;
+    margin: 8px;
+    border-radius: 5px;
+}
+
+.sideBarItem.active{
+    background-color: #385898;
+}
+
+.sideBarItem a{
+    color: #fff;
+    text-decoration: none;
     cursor: pointer;
-    
 }
 
 .postFormContainer{
@@ -59,11 +85,20 @@ a.nav-link.active{
     width: 326px;
     height: 42px;
     padding: 10px;
+    background-color: #242627;
+    border:1px solid #3e4042;
+    border-radius: 5px;
+    color: #fff;
 }
 
 .form-row textarea{
     width: 326px;
     padding: 10px;
+    padding: 10px;
+    background-color: #242627;
+    border:1px solid #3e4042;
+    border-radius: 5px;
+    color: #fff;
 }
 .submitpost{
     width: 286px;
@@ -82,6 +117,8 @@ a.nav-link.active{
     width: 240px;
     margin: 10px;
     float: left;
+    background-color: #242627;
+    border: 1px solid #3e4042;
 }
 
 .detailClick{
@@ -109,6 +146,7 @@ a.nav-link.active{
     border-radius: 24px;
     background-color: rgb(207, 207, 207);
     color:#fff;
+    margin-left: 20px;
 }
 
 .detailMainDiv{
@@ -120,4 +158,23 @@ a.nav-link.active{
 .detailInfo.Title{
     font-size: 24px;
     font-weight: 700;
+    padding: 12px;
+}
+
+.detailDivContainer{
+    width: 600px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #3e4042;
+    border-radius: 5px;
+    margin-top: 14px;
+}
+
+.detailDivContainer .detailTitle{
+    font-weight: 600;
+}
+
+.detailDivContainer .detailInfo{
+    font: normal;
+    font-size: 12px;
 }

@@ -5,21 +5,21 @@
     <div class='sideBar'>
         {% for categroy in categorylist %}
         <div class='sideBarItem {{ categroy.category_name }}'>
-            {{ categroy.category_name }}
+           <a href='/home/{{ categroy.category_name }}/'>  {{ categroy.category_name }}</a>
         </div>
         {% endfor %}
     </div>
     <div class='mainBody'>
-        {% for usedcar in usedcarlist %}
+        {% for item in list %}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{usedcar.post_title}}
-                    <span class="material-icons detailClick" id={{usedcar.id}}>
+                <h5 class="card-title">{{item.post_title}}
+                    <span class="material-icons detailClick" id={{item.id}}>
                         more_horiz
                     </span>
                 </h5>
-                <p class="card-text">CAD: ${{usedcar.post_price}}</p>
-                <p class="card-text"><small class="text-muted">{{usedcar.pub_date}}</small></p>
+                <p class="card-text">CAD: ${{item.post_price}}</p>
+                <p class="card-text"><small class="text-muted">{{item.pub_date}}</small></p>
             </div>
         </div>
         {% endfor%}

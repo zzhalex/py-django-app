@@ -6,13 +6,27 @@ from .models import Category, Post
 from django import forms
 from .forms import PostForm
 
+import json
+import time
+
 # Create your views here.
 def index(request):
+	type = 1
 	category_list = Category.objects.all()
-	usedcar_list = Post.objects.filter(category = 1).values('post_title','post_price','id','pub_date')[:20]
+	list = Post.objects.filter(category = type).values('post_title','post_price','id','pub_date')[:20]
 	context = {'categorylist': category_list,
-				'usedcarlist': usedcar_list}
-	print(context['categorylist'])
+				'list': list}
+	return render(request,'news/home.html',context)
+
+def switchType(request,category):
+	type = 1
+	print(category)
+	if(category=='Rentals'):
+		type = 2
+	category_list = Category.objects.all()
+	list = Post.objects.filter(category = type).values('post_title','post_price','id','pub_date')[:20]
+	context = {'categorylist': category_list,
+				'list': list}
 	return render(request,'news/home.html',context)
 
 def addnew(request):
@@ -29,7 +43,11 @@ def addnew(request):
 			# time = 
 			p = Post(category=categoryval,post_text=post_textval,post_title=post_titleval,post_price=post_priceval,post_contact=post_contactval,post_owner=post_ownerval)
 			p.save()
-			
+			category_list = Category.objects.all()
+			list = Post.objects.filter(category = categoryval).values('post_title','post_price','id','pub_date')[:20]
+			context = {'categorylist': category_list,
+						'list': list}
+			return render(request,'news/home.html',context)	
 		else:
 			return render(request,'news/add.html',{
 				'from':PostForm()
@@ -40,15 +58,7 @@ def addnew(request):
 		})
 
 def getData(request):
-	print(request)
-	print(request.POST)
 	dataid = request.POST['id']
 	obj = Post.objects.get(id = dataid)
 	data = serializers.serialize("json", [obj,])
-
-	print(data)
 	return HttpResponse(data)
-
-def detail(request):
-
-	return render(request,'news/detail.html',{'form':'dd'})

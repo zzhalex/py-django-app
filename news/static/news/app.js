@@ -4,17 +4,33 @@ var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 $(document).ready(function () {
   navSwitch();
   detailClick();
+  sideBarHightlight();
 });
 
 function navSwitch() {
   var pathname = window.location.pathname;
-  if (pathname == "/") {
-    cleanNavActive();
-    $($(".nav-link")[0]).addClass("active");
-  } else if (pathname == "/addnew/") {
+  if (pathname.indexOf("/addnew/")>0) {
     cleanNavActive();
     $($(".nav-link")[1]).addClass("active");
+  } else{
+    cleanNavActive();
+    $($(".nav-link")[0]).addClass("active");
   }
+}
+
+function sideBarHightlight(){
+  var pathname = window.location.pathname;
+  if (pathname.indexOf("/Rentals/")>0) {
+    cleanSideBar();
+    $($(".sideBarItem")[1]).addClass("active");
+  } else{
+    cleanSideBar();
+    $($(".sideBarItem")[0]).addClass("active");
+  }
+}
+
+function cleanSideBar(){
+    $(".sideBarItem").removeClass("active");
 }
 
 function cleanNavActive() {
@@ -45,9 +61,10 @@ function detailBody(data){
     var template = '<div class="detailMainDiv">';
     var content = JSON.parse(data)[0].fields;
     template = template+adddetailRow('Title',content.post_title)
-                       +adddetailRow('Price',content.post_price)
+                       +adddetailRow('Price',new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'CAD' }).format(content.post_price))
                        +adddetailRow('Description',content.post_text)
-                       +adddetailRow('Time',content.pub_date)
+                       +adddetailRow('Contact Name',content.post_owner)
+                       +adddetailRow('Contact Information',content.post_contact)
                        +'</div>'
 
     return head+template;
@@ -60,12 +77,14 @@ function adddetailRow(title,data){
                         `+data+`       
                     </div>`
     }else{
-        template = `<div class='detailDiv `+title+`'>
-                        <div class='detailTitle'>
-                            `+title+`
-                        </div>
-                        <div class='detailInfo'>
-                            `+data+`
+        template = `<div class='detailDivContainer'>
+                        <div class='detailDiv `+title+`'>
+                            <div class='detailTitle'>
+                                `+title+`
+                            </div>
+                            <div class='detailInfo'>
+                                `+data+`
+                            </div>
                         </div>
                     </div>`
     }
@@ -77,10 +96,10 @@ function detailClick() {
   $(".detailClick").click(function () {
     $.ajax({
       method: "POST",
-      url: "getData/",
+      url: "/home/function/getData/",
       data: { id: this.id,
              csrfmiddlewaretoken:csrftoken },
-      //contentType:'application/json,charset=utf-8',
+    //   contentType:'application/json,charset=utf-8',
       success: function (res) {
         console.log(res);
         showDetail(res)

@@ -11,4 +11,4 @@ class PostForm(forms.Form):
     post_text = forms.CharField(label='Description',widget=forms.Textarea,max_length=1000)
     post_price = forms.IntegerField(label='Price')
     post_contact = forms.EmailField(label='Contact Information',max_length=100,help_text='A valid email address, please.')
-    post_owner = forms.CharField(max_length=100)
+    post_owner = forms.CharField(label='Contact Name',max_length=100)
