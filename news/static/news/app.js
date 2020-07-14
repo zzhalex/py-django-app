@@ -4,7 +4,7 @@ var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 $(document).ready(function () {
   navSwitch();
   detailClick();
-  sideBarHightlight();
+  //sideBarHightlight();
 });
 
 function navSwitch() {
@@ -96,7 +96,7 @@ function detailClick() {
   $(".detailClick").click(function () {
     $.ajax({
       method: "POST",
-      url: "/home/function/getData/",
+      url: "/function/getData/",
       data: { id: this.id,
              csrfmiddlewaretoken:csrftoken },
     //   contentType:'application/json,charset=utf-8',

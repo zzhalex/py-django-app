@@ -119,6 +119,12 @@ a.nav-link.active span{
     float: left;
     background-color: #242627;
     border: 1px solid #3e4042;
+    height: 240px;
+}
+
+.card .timestamp{
+    position: absolute;
+    bottom:5px;
 }
 
 .detailClick{
@@ -127,6 +133,9 @@ a.nav-link.active span{
     width: 24px;
     height: 24px;
     border-radius: 16px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .detailClick:hover{

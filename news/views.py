@@ -12,7 +12,7 @@ import time
 # Create your views here.
 def index(request):
 	type = 1
-	category_list = Category.objects.all()
+	category_list = [{'category_name':'Used Car','classname':'active'},{'category_name':'Rentals','classname':''}]
 	list = Post.objects.filter(category = type).values('post_title','post_price','id','pub_date')[:20]
 	context = {'categorylist': category_list,
 				'list': list}
@@ -20,11 +20,21 @@ def index(request):
 
 def switchType(request,category):
 	type = 1
+	usedCarClass = 'active'
+	rentalsClass = ''
 	print(category)
 	if(category=='Rentals'):
 		type = 2
-	category_list = Category.objects.all()
+		rentalsClass = 'active'
+		usedCarClass = ''
+	print("--------")
+	print(type)
+	print("--------")
 	list = Post.objects.filter(category = type).values('post_title','post_price','id','pub_date')[:20]
+	# print(type(category_list))
+
+	category_list = [{'category_name':'Used Car','classname':usedCarClass},{'category_name':'Rentals','classname':rentalsClass}]
+	print(category_list)
 	context = {'categorylist': category_list,
 				'list': list}
 	return render(request,'news/home.html',context)
@@ -43,7 +53,16 @@ def addnew(request):
 			# time = 
 			p = Post(category=categoryval,post_text=post_textval,post_title=post_titleval,post_price=post_priceval,post_contact=post_contactval,post_owner=post_ownerval)
 			p.save()
-			category_list = Category.objects.all()
+			print(categoryval)
+			print(type(categoryval))
+			if categoryval == '1':
+				usedCarClass = 'active'
+				rentalsClass = ''
+			else:
+				usedCarClass = ''
+				rentalsClass = 'active'
+
+			category_list = [{'category_name':'Used Car','classname':usedCarClass},{'category_name':'Rentals','classname':rentalsClass}]
 			list = Post.objects.filter(category = categoryval).values('post_title','post_price','id','pub_date')[:20]
 			context = {'categorylist': category_list,
 						'list': list}
