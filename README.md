@@ -1,7 +1,12 @@
 ## py-django-app
-A simple version of market place. User can make posting of used cars and rentals.
-* **Front end**: jQuery and Django template engine
-* **Back end**: Django
-* **Database**: sqlite3, postgresql for heroku deployment
-## Heroku App
+A simple version of market place. 
+
+### Tech
+- Django - Python web framework
+- jQuery - Front end Js library
+- Bootstrap - Css  library
+- Postgresql - Database
+- Heroku - Cloud platform
+
+### Online Demo
    https://marketplacesite.herokuapp.com/
